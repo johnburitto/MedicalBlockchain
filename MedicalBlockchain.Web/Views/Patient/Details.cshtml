@@ -1,0 +1,42 @@
+﻿@model Patient
+
+@{
+    ViewData["Title"] = "Деталі пацієнта";
+}
+
+<h1>Пацієнт: @Model.Name</h1>
+
+<h3>Додати новий медичний запис</h3>
+
+<form asp-action="AddMedicalRecord" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Діагноз</label>
+        <input type="text" name="diagnosis" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Лікування</label>
+        <input type="text" name="treatment" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Додати запис</button>
+</form>
+
+<h3 class="mt-5">Історія блоків (Blockchain)</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Діагноз</th>
+            <th>Лікування</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var block in Model.MedicalRecords ?? [])
+        {
+            <tr>
+                <td>@block.Diagnosis</td>
+                <td>@block.Treatment</td>
+            </tr>
+        }
+    </tbody>
+</table>

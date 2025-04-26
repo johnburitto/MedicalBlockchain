@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Створити пацієнта";
+}
+
+<h1>Створення нового пацієнта</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="name">Ім'я пацієнта</label>
+        <input type="text" class="form-control" id="name" name="name" />
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Створити</button>
+</form>

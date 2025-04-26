@@ -1,0 +1,30 @@
+﻿@model List<Patient>
+
+@{
+    ViewData["Title"] = "Пацієнти";
+}
+
+<h1>Список пацієнтів</h1>
+
+<a class="btn btn-primary" asp-action="Create">Додати нового пацієнта</a>
+<a class="btn btn-info" asp-action="Process">Виконати процедури</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Ім'я</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.Name</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@patient.Id">Переглянути</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
